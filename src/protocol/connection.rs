@@ -218,11 +218,8 @@ where
     debug!("{}: Successfully set Redis client name.", name);
     Ok(transport)
   } else {
-    error!("{} Failed to set client name with error {:?}", name, response);
-    Err(RedisError::new(
-      RedisErrorKind::ProtocolError,
-      "Failed to set client name.",
-    ))
+    warn!("{} Failed to set client name with error {:?}", name, response);
+    Ok(transport)
   }
 }
 
